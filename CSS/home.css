@@ -1,0 +1,101 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #1E90FF;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin: 8px 12px;
+            padding: 8px 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #00C49A;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f0f8ff;
+            color: #1E90FF;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        section h2 {
+            color: #1E90FF;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+
+        section p {
+            margin-bottom: 12px;
+        }
+
+        section ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #00C49A;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #01977c;
+        }
+
+        footer {
+            background-color: #1b1b1b;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
