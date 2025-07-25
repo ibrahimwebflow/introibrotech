@@ -1,82 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introibrotech Innovation - Home</title>
-    <link rel="stylesheet" href="/CSS/home.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introibrotech Innovation – Free Tech for Dreamers</title>
+
+  <!--  Tailwind CDN  -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--  Three.js (only 60 KB)  -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!--  AOS scroll animations  -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!--  Google Fonts  -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* Make the 3-D canvas sit behind the content */
+    #bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-slate-900 text-slate-100 overflow-x-hidden">
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="signup.html">Join Us</a>
-        <a href="login.html">Login</a>
-        <a href="#about">About</a>
-        <a href="#terms">Terms of Service</a>
-        <a href="#contact">Contact</a>
-        <a href="#learn-code">Learn to Code</a>
-        <a href="#learn-graphics">Learn Graphics</a>
-        <a href="#math-help">Ask Math Questions</a>
-    </nav>
+<canvas id="bgCanvas"></canvas>
 
-    <header>
-        <h1>INTROIBROTECH INNOVATION</h1>
-        <p>A Non-Profit Empowering Innovators with Free Tech Solutions</p>
-    </header>
+<!-- -------------- NAVBAR -------------- -->
+<nav class="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-md z-50">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <span class="font-bold text-xl tracking-tight">Introibrotech</span>
 
-    <section class="intro-container">
-        <h2>Bridging the Gap Between Dreams and Digital Reality</h2>
-        <p>Are you a small business owner who can't afford a website, logo, or branding? Or a student eager to learn coding or graphics but lack the resources?</p>
-        <p><strong>Introibrotech is here to help — at no cost.</strong></p>
-        <p>We offer:</p>
-        <ul>
-            <li>Free websites for small/startup businesses</li>
-            <li>Free logos and graphic design tools</li>
-            <li>Free coding & design training</li>
-            <li>A community where you can ask questions and grow</li>
-        </ul>
-        <p>🚀 Ready to join the innovation movement?</p>
-        <a href="#join"><button>Join Us</button></a>
-    </section>
+  <!-- Mobile Hamburger -->
+  <button id="hamburger" class="md:hidden text-3xl">☰</button>
 
-    <section id="about">
-        <h2>About Introibrotech</h2>
-        <p>Introibrotech is a non-profit founded by young innovators who believe that everyone — regardless of income — deserves access to quality technology tools, training, and branding. We build free websites, design logos, and teach coding to empower the next generation.</p>
-    </section>
+  <!-- Links -->
+  <ul id="navLinks"
+      class="hidden md:flex flex-col md:flex-row gap-6 text-sm font-medium">
+    <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+    <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+    <li><a href="#services" class="hover:text-cyan-400 transition">Services</a></li>
+    <li><a href="#community" class="hover:text-cyan-400 transition">Community</a></li>
+    <li><a href="#join" class="hover:text-cyan-400 transition">Join</a></li>
+  </ul>
+  </div>
+</nav>
 
-    <section>
-        <h2>Who Have We Helped?</h2>
-        <p>We recently helped <strong>Teefarhs Empire</strong> — a small fashion brand — with a free logo, graphics, and website. They were able to reach more customers and build an online presence without financial stress.</p>
-    </section>
+<!-- -------------- HERO -------------- -->
+<section id="home" class="min-h-screen flex items-center justify-center px-6">
+  <div class="text-center max-w-3xl">
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter"
+        data-aos="zoom-in">INTROIBROTECH <span class="text-cyan-400">INNOVATION</span></h1>
+    <p class="mt-6 text-lg md:text-xl text-slate-300"
+       data-aos="fade-up" data-aos-delay="300">
+      Empowering entrepreneurs & students with <strong class="text-cyan-400">100 % free</strong> tech, design & code.
+    </p>
+    <a href="#join"
+       class="mt-10 inline-block bg-gradient-to-r from-cyan-500 to-teal-600 px-8 py-4 rounded-full font-semibold text-white shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
+       data-aos="fade-up" data-aos-delay="600">
+      Get Started Free
+    </a>
+  </div>
+</section>
 
-    <section id="learn-code">
-        <h2>Learn to Code</h2>
-        <p>Start your programming journey with free courses in HTML, CSS, JavaScript, and Python. Build projects, get mentorship, and become a digital builder.</p>
-    </section>
+<!-- -------------- ABOUT -------------- -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div data-aos="fade-right">
+      <h2 class="text-4xl font-bold mb-6">We turn ideas into <span class="text-cyan-400">digital reality</span></h2>
+      <p class="text-slate-300 leading-relaxed">
+        Introibrotech is a youth-led non-profit founded in 2023.  
+        Our mission: **close the tech gap** by giving **free** websites, logos, branding & training to anyone with a dream but no budget.
+      </p>
+    </div>
+    <div class="relative" data-aos="fade-left">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=60"
+           class="rounded-2xl shadow-2xl"/>
+      <div class="absolute inset-0 bg-cyan-500/20 rounded-2xl blur-3xl"></div>
+    </div>
+  </div>
+</section>
 
-    <section id="learn-graphics">
-        <h2>Learn Graphics Design</h2>
-        <p>Master tools like CorelDRAW, Canva, and Photoshop. Create stunning designs and build your brand or career from scratch — all for free.</p>
-    </section>
+<!-- -------------- SERVICES -------------- -->
+<section id="services" class="py-24 bg-slate-800/50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">What We Offer</h2>
 
-    <section id="math-help">
-        <h2>Ask Questions on Maths</h2>
-        <p>Struggling with a math question? Ask it here and get help from others in our community. Together, we solve and grow.</p>
-    </section>
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <!-- Card 1 -->
+      <div class="bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-cyan-500/30 transition"
+           data-aos="flip-left">
+        <img src="https://cdn-icons-png.flaticon.com/512/1874/1874188.png" class="h-16 mx-auto mb-4"/>
+        <h3 class="text-xl font-semibold mb-2">Free Websites</h3>
+        <p class="text-slate-400 text-sm">A complete, mobile-ready site delivered in 7 days.</p>
+      </div>
 
-    <section id="join">
-        <h2>Join Our Community</h2>
-        <p>Be part of something bigger. Learn, build, and grow — together.</p>
-        <button>Sign Up Now</button>
-    </section>
+      <!-- Card 2 -->
+      <div class="bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-cyan-500/30 transition"
+           data-aos="flip-left" data-aos-delay="200">
+        <img src="https://cdn-icons-png.flaticon.com/512/2302/2302394.png" class="h-16 mx-auto mb-4"/>
+        <h3 class="text-xl font-semibold mb-2">Logo & Branding</h3>
+        <p class="text-slate-400 text-sm">Unique identity packs that stand out on every screen.</p>
+      </div>
 
-    <footer>
-        © 2025 Introibrotech Innovation | Empowering Dreams with Technology
-    </footer>
+      <!-- Card 3 -->
+      <div class="bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-cyan-500/30 transition"
+           data-aos="flip-left" data-aos-delay="400">
+        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995539.png" class="h-16 mx-auto mb-4"/>
+        <h3 class="text-xl font-semibold mb-2">Live Mentorship</h3>
+        <p class="text-slate-400 text-sm">Weekly workshops on code, design & business growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- -------------- SUCCESS STORY -------------- -->
+<section class="py-24 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8" data-aos="zoom-in">Real Impact</h2>
+    <blockquote class="italic text-xl text-cyan-400 border-l-4 border-cyan-400 pl-6"
+                data-aos="fade-up">
+      “Thanks to Introibrotech we launched our fashion brand online in under a week — **completely free**. Orders tripled within a month!”
+    </blockquote>
+    <p class="mt-4 text-slate-400">— <strong>Teefarhs Empire</strong>, Fashion Start-up</p>
+  </div>
+</section>
+
+<!-- -------------- COMMUNITY -------------- -->
+<section id="community" class="py-24 bg-slate-800/50">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">Join 2 000+ Dreamers</h2>
+    <p class="text-slate-300 mb-12" data-aos="fade-up" data-aos-delay="200">
+      Ask questions, share wins, and accelerate your growth inside our Discord & weekly Zoom labs.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-slate-800 p-6 rounded-xl" data-aos="zoom-in">
+        <h3 class="font-bold">#Code-Help</h3>
+        <p class="text-sm text-slate-400">Live debugging sessions</p>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="font-bold">#Design-Critique</h3>
+        <p class="text-sm text-slate-400">Get feedback on your visuals</p>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="400">
+        <h3 class="font-bold">#Math-Whiz</h3>
+        <p class="text-sm text-slate-400">Homework help & exam prep</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------------- CTA -------------- -->
+<section id="join" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">Ready to Start?</h2>
+    <p class="text-slate-300 mb-10" data-aos="fade-up" data-aos-delay="200">
+      No fees. No spam. Just pure opportunity.
+    </p>
+    <a href="signup.html"
+       class="inline-block bg-gradient-to-r from-cyan-500 to-teal-600 px-10 py-4 rounded-full font-bold text-white shadow-lg hover:scale-105 transition-transform"
+       data-aos="zoom-in" data-aos-delay="400">
+      Sign Up Free
+    </a>
+  </div>
+</section>
+
+<!-- -------------- FOOTER -------------- -->
+<footer class="py-8 bg-slate-900/80 text-center text-sm text-slate-400">
+  © 2025 Introibrotech Innovation – Empowering Dreams with Technology
+</footer>
+
+<!-- -------------- SCRIPTS -------------- -->
+<script>
+  /* --- Mobile Nav Toggle --- */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('hidden');
+  });
+
+  /* --- AOS --- */
+  AOS.init({ once: true, duration: 800 });
+
+  /* --- Three.js Animated Background --- */
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha: true });
+  renderer.setSize(innerWidth, innerHeight);
+
+  const geometry = new THREE.TorusGeometry(5, 1.5, 16, 100);
+  const material = new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true });
+  const torus = new THREE.Mesh(geometry, material);
+  scene.add(torus);
+
+  camera.position.z = 15;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    torus.rotation.x += 0.004;
+    torus.rotation.y += 0.002;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  /* Make canvas responsive */
+  window.addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+</script>
 </body>
-
-</html>
+    </html>
