@@ -7,41 +7,89 @@
     <link rel="stylesheet" href="styles/global.css" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="scripts/supabase.js" defer></script>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-            background: #f0f0f0;
-        }
+    <!--  NEW  STYLES  (drop-in replacement)  -->
+<style>
+/* Reset & base ------------------------------------------------------------- */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:linear-gradient(135deg,#f5f7fa 0%, #c3cfe2 100%);
+  min-height:100vh;
+  padding:40px 20px;
+  color:#333;
+  line-height:1.6;
+}
 
-        .card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 0 5px #ccc;
-        }
+/* Headings ----------------------------------------------------------------- */
+h2,h3{
+  color:#2c3e50;
+  margin-bottom:20px;
+  font-weight:600;
+  letter-spacing:.5px;
+}
 
-        textarea,
-        input,
-        select {
-            width: 100%;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
+/* Cards --------------------------------------------------------------------- */
+.card{
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  padding:25px;
+  margin-bottom:25px;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,.11)}
 
-        h2 {
-            color: darkblue;
-        }
+/* Forms --------------------------------------------------------------------- */
+form#course-form label{
+  display:block;
+  margin:16px 0 6px;
+  font-weight:600;
+  color:#444;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #ccd0d5;
+  border-radius:8px;
+  font-size:15px;
+  transition:border-color .2s;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#3498db;
+  outline:none;
+}
+textarea{min-height:100px;resize:vertical}
 
-        button {
-            background: green;
-            color: white;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 5px;
-        }
-    </style>
+/* Buttons ------------------------------------------------------------------ */
+button{
+  background:linear-gradient(135deg,#4caf50 0%, #45a049 100%);
+  color:#fff;
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+  font-size:15px;
+  cursor:pointer;
+  transition:background .3s,transform .2s;
+  margin-top:10px;
+}
+button:hover{background:linear-gradient(135deg,#45a049 0%, #3e8e41 100%);transform:translateY(-1px)}
+button:active{transform:translateY(0)}
+
+/* Status text -------------------------------------------------------------- */
+#upload-status{
+  margin-top:15px;
+  font-weight:600;
+  font-size:15px;
+  min-height:22px;
+}
+#admin-content{margin-top:30px}
+
+/* Responsive tweaks -------------------------------------------------------- */
+@media(max-width:600px){
+  body{padding:20px 15px}
+  .card{padding:18px}
+}
+</style>
 </head>
 
 <body>
